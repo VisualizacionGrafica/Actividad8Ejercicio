@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+<head>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+google.charts.load("current", {packages:['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+function drawChart() {
+var data = google.visualization.arrayToDataTable([
+["Element", "Density", { role: "style" } ],
+['2008',44.4, "color: #525852"],
+['2010',46.1, "color: #524541"],
+['2012',45.5, "color: #761256"],
+['2014',46.2, "color: #789456"],
+['2016',43.6, "color: #852074"],
+['2018',41.9, "color: #f98765"],
+]);
+var view = new google.visualization.DataView(data);
+view.setColumns([0, 1,
+{ calc: "stringify",
+sourceColumn: 1,
+type: "string",
+role: "annotation" },
+2]);
+var options = {
+title: "Personas en situación de pobreza",
+width: 600,
+height: 400,
+bar: {groupWidth: "95%"},
+legend: { position: "none" },
+};
+var chart = new
+google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+chart.draw(view, options);
+}
+</script>
+</head>
+<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+</body>
+</html>
